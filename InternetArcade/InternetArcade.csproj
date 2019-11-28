@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{603004FA-08B3-42C7-81F8-DF41376D32DE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>InternetArcade</RootNamespace>
+    <AssemblyName>InternetArcade</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>InternetArcade.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CustomTabControl">
+      <HintPath>C:\Users\silas\Desktop\Browser\CustomTabControl\bin\Debug\CustomTabControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\GlobalKeyboardHook.cs" />
+    <Compile Include="Classes\MiscUtils.cs" />
+    <Compile Include="Classes\SchemeHandler.cs" />
+    <Compile Include="Classes\SchemeHandlerFactory.cs" />
+    <Compile Include="Classes\TabDragger.cs" />
+    <Compile Include="Classes\ToolStripSpringComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\URLUtils.cs" />
+    <Compile Include="InternetArcade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InternetArcade.Designer.cs">
+      <DependentUpon>InternetArcade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuList.Designer.cs">
+      <DependentUpon>MenuList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="InternetArcade.resx">
+      <DependentUpon>InternetArcade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Images\arrows-buttons-graphicsfuel.psd" />
+    <None Include="Images\knobs\ICNS\Knob Add.icns" />
+    <None Include="Images\knobs\ICNS\Knob Attention.icns" />
+    <None Include="Images\knobs\ICNS\Knob Blue.icns" />
+    <None Include="Images\knobs\ICNS\Knob Cancel.icns" />
+    <None Include="Images\knobs\ICNS\Knob Download.icns" />
+    <None Include="Images\knobs\ICNS\Knob Fast Forward.icns" />
+    <None Include="Images\knobs\ICNS\Knob Fast Rewind.icns" />
+    <None Include="Images\knobs\ICNS\Knob Favorite.icns" />
+    <None Include="Images\knobs\ICNS\Knob Forward.icns" />
+    <None Include="Images\knobs\ICNS\Knob Graphite.icns" />
+    <None Include="Images\knobs\ICNS\Knob Green.icns" />
+    <None Include="Images\knobs\ICNS\Knob Grey.icns" />
+    <None Include="Images\knobs\ICNS\Knob Help.icns" />
+    <None Include="Images\knobs\ICNS\Knob Info.icns" />
+    <None Include="Images\knobs\ICNS\Knob Left.icns" />
+    <None Include="Images\knobs\ICNS\Knob Loop Off.icns" />
+    <None Include="Images\knobs\ICNS\Knob Loop On.icns" />
+    <None Include="Images\knobs\ICNS\Knob Message.icns" />
+    <None Include="Images\knobs\ICNS\Knob Orange.icns" />
+    <None Include="Images\knobs\ICNS\Knob Pause.icns" />
+    <None Include="Images\knobs\ICNS\Knob Play Green.icns" />
+    <None Include="Images\knobs\ICNS\Knob Play.icns" />
+    <None Include="Images\knobs\ICNS\Knob Purple.icns" />
+    <None Include="Images\knobs\ICNS\Knob Record Off.icns" />
+    <None Include="Images\knobs\ICNS\Knob Record On.icns" />
+    <None Include="Images\knobs\ICNS\Knob Red.icns" />
+    <None Include="Images\knobs\ICNS\Knob Refresh.icns" />
+    <None Include="Images\knobs\ICNS\Knob Remove Red.icns" />
+    <None Include="Images\knobs\ICNS\Knob Remove.icns" />
+    <None Include="Images\knobs\ICNS\Knob Search.icns" />
+    <None Include="Images\knobs\ICNS\Knob Shuffle Off.icns" />
+    <None Include="Images\knobs\ICNS\Knob Shuffle On.icns" />
+    <None Include="Images\knobs\ICNS\Knob Smart.icns" />
+    <None Include="Images\knobs\ICNS\Knob Snapback.icns" />
+    <None Include="Images\knobs\ICNS\Knob Snapforward.icns" />
+    <None Include="Images\knobs\ICNS\Knob Stop.icns" />
+    <None Include="Images\knobs\ICNS\Knob Upload.icns" />
+    <None Include="Images\knobs\ICNS\Knob Valid Blue.icns" />
+    <None Include="Images\knobs\ICNS\Knob Valid Green.icns" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery-3.4.1.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InternetArcade.ico" />
+    <Content Include="Images\Browser_Icon_256.ico" />
+    <Content Include="Images\Browser_Icon_256.png" />
+    <Content Include="Images\Glossy_3d_blue_web_Icon_256.ico" />
+    <Content Include="Images\Glossy_3d_blue_web_Icon_256.png" />
+    <Content Include="Images\knobs\Home Button.jpg" />
+    <Content Include="Images\knobs\ICO\Knob Add.ico" />
+    <Content Include="Images\knobs\ICO\Knob Attention.ico" />
+    <Content Include="Images\knobs\ICO\Knob Blue.ico" />
+    <Content Include="Images\knobs\ICO\Knob Cancel.ico" />
+    <Content Include="Images\knobs\ICO\Knob Download.ico" />
+    <Content Include="Images\knobs\ICO\Knob Fast Forward.ico" />
+    <Content Include="Images\knobs\ICO\Knob Fast Rewind.ico" />
+    <Content Include="Images\knobs\ICO\Knob Favorite.ico" />
+    <Content Include="Images\knobs\ICO\Knob Forward.ico" />
+    <Content Include="Images\knobs\ICO\Knob Graphite.ico" />
+    <Content Include="Images\knobs\ICO\Knob Green.ico" />
+    <Content Include="Images\knobs\ICO\Knob Grey.ico" />
+    <Content Include="Images\knobs\ICO\Knob Help.ico" />
+    <Content Include="Images\knobs\ICO\Knob Info.ico" />
+    <Content Include="Images\knobs\ICO\Knob Left.ico" />
+    <Content Include="Images\knobs\ICO\Knob Loop Off.ico" />
+    <Content Include="Images\knobs\ICO\Knob Loop On.ico" />
+    <Content Include="Images\knobs\ICO\Knob Message.ico" />
+    <Content Include="Images\knobs\ICO\Knob Orange.ico" />
+    <Content Include="Images\knobs\ICO\Knob Pause.ico" />
+    <Content Include="Images\knobs\ICO\Knob Play Green.ico" />
+    <Content Include="Images\knobs\ICO\Knob Play.ico" />
+    <Content Include="Images\knobs\ICO\Knob Purple.ico" />
+    <Content Include="Images\knobs\ICO\Knob Record Off.ico" />
+    <Content Include="Images\knobs\ICO\Knob Record On.ico" />
+    <Content Include="Images\knobs\ICO\Knob Red.ico" />
+    <Content Include="Images\knobs\ICO\Knob Refresh.ico" />
+    <Content Include="Images\knobs\ICO\Knob Remove Red.ico" />
+    <Content Include="Images\knobs\ICO\Knob Remove.ico" />
+    <Content Include="Images\knobs\ICO\Knob Search.ico" />
+    <Content Include="Images\knobs\ICO\Knob Shuffle Off.ico" />
+    <Content Include="Images\knobs\ICO\Knob Shuffle On.ico" />
+    <Content Include="Images\knobs\ICO\Knob Smart.ico" />
+    <Content Include="Images\knobs\ICO\Knob Snapback.ico" />
+    <Content Include="Images\knobs\ICO\Knob Snapforward.ico" />
+    <Content Include="Images\knobs\ICO\Knob Stop.ico" />
+    <Content Include="Images\knobs\ICO\Knob Upload.ico" />
+    <Content Include="Images\knobs\ICO\Knob Valid Blue.ico" />
+    <Content Include="Images\knobs\ICO\Knob Valid Green.ico" />
+    <Content Include="Images\knobs\ICO\Web Browser.ico" />
+    <Content Include="Images\knobs\PNG\Calendar.png" />
+    <Content Include="Images\knobs\PNG\Knob Add.png" />
+    <Content Include="Images\knobs\PNG\Knob Attention.png" />
+    <Content Include="Images\knobs\PNG\Knob Blue.png" />
+    <Content Include="Images\knobs\PNG\Knob Cancel.png" />
+    <Content Include="Images\knobs\PNG\Knob Download.png" />
+    <Content Include="Images\knobs\PNG\Knob Fast Forward.png" />
+    <Content Include="Images\knobs\PNG\Knob Fast Rewind.png" />
+    <Content Include="Images\knobs\PNG\Knob Favorite.png" />
+    <Content Include="Images\knobs\PNG\Knob Forward.png" />
+    <Content Include="Images\knobs\PNG\Knob Graphite.png" />
+    <Content Include="Images\knobs\PNG\Knob Green.png" />
+    <Content Include="Images\knobs\PNG\Knob Grey.png" />
+    <Content Include="Images\knobs\PNG\Knob Help.png" />
+    <Content Include="Images\knobs\PNG\Knob Info.png" />
+    <Content Include="Images\knobs\PNG\Knob Left.png" />
+    <Content Include="Images\knobs\PNG\Knob Loop Off.png" />
+    <Content Include="Images\knobs\PNG\Knob Loop On.png" />
+    <Content Include="Images\knobs\PNG\Knob Message.png" />
+    <Content Include="Images\knobs\PNG\Knob Orange.png" />
+    <Content Include="Images\knobs\PNG\Knob Pause.png" />
+    <Content Include="Images\knobs\PNG\Knob Play Green.png" />
+    <Content Include="Images\knobs\PNG\Knob Play.png" />
+    <Content Include="Images\knobs\PNG\Knob Purple.png" />
+    <Content Include="Images\knobs\PNG\Knob Record Off.png" />
+    <Content Include="Images\knobs\PNG\Knob Record On.png" />
+    <Content Include="Images\knobs\PNG\Knob Red.png" />
+    <Content Include="Images\knobs\PNG\Knob Refresh.png" />
+    <Content Include="Images\knobs\PNG\Knob Remove Red.png" />
+    <Content Include="Images\knobs\PNG\Knob Remove.png" />
+    <Content Include="Images\knobs\PNG\Knob Search.png" />
+    <Content Include="Images\knobs\PNG\Knob Shuffle Off.png" />
+    <Content Include="Images\knobs\PNG\Knob Shuffle On.png" />
+    <Content Include="Images\knobs\PNG\Knob Smart.png" />
+    <Content Include="Images\knobs\PNG\Knob Snapback.png" />
+    <Content Include="Images\knobs\PNG\Knob Snapforward.png" />
+    <Content Include="Images\knobs\PNG\Knob Stop.png" />
+    <Content Include="Images\knobs\PNG\Knob Upload.png" />
+    <Content Include="Images\knobs\PNG\Knob Valid Blue.png" />
+    <Content Include="Images\knobs\PNG\Knob Valid Green.png" />
+    <Content Include="Images\knobs\PNG\Remove Tab.png" />
+    <Content Include="Images\knobs\TIFF\Knob Add.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Attention.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Blue.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Cancel.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Download.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Fast Forward.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Fast Rewind.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Favorite.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Forward.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Graphite.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Green.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Grey.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Help.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Info.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Left.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Loop Off.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Loop On.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Message.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Orange.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Pause.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Play Green.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Play.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Purple.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Record Off.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Record On.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Red.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Refresh.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Remove Red.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Remove.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Search.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Shuffle Off.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Shuffle On.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Smart.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Snapback.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Snapforward.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Stop.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Upload.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Valid Blue.tiff" />
+    <Content Include="Images\knobs\TIFF\Knob Valid Green.tiff" />
+    <Content Include="Images\readme.txt" />
+    <Content Include="Images\round blue\arrow-down.png" />
+    <Content Include="Images\round blue\arrow-left.png" />
+    <Content Include="Images\round blue\arrow-right.png" />
+    <Content Include="Images\round blue\arrow-up.png" />
+    <Content Include="Images\round green\arrow-down.png" />
+    <Content Include="Images\round green\arrow-left.png" />
+    <Content Include="Images\round green\arrow-right.png" />
+    <Content Include="Images\round green\arrow-up.png" />
+    <Content Include="Images\round grey\arrow-down.png" />
+    <Content Include="Images\round grey\arrow-left.png" />
+    <Content Include="Images\round grey\arrow-right.png" />
+    <Content Include="Images\round grey\arrow-up.png" />
+    <Content Include="Images\round orange\arrow-down.png" />
+    <Content Include="Images\round orange\arrow-left.png" />
+    <Content Include="Images\round orange\arrow-right.png" />
+    <Content Include="Images\round orange\arrow-up.png" />
+    <Content Include="Images\rounded corner black\arrow-down.png" />
+    <Content Include="Images\rounded corner black\arrow-left.png" />
+    <Content Include="Images\rounded corner black\arrow-right.png" />
+    <Content Include="Images\rounded corner black\arrow-up.png" />
+    <Content Include="Images\rounded corner grey\arrow-down.png" />
+    <Content Include="Images\rounded corner grey\arrow-left.png" />
+    <Content Include="Images\rounded corner grey\arrow-right.png" />
+    <Content Include="Images\rounded corner grey\arrow-up.png" />
+    <Content Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.targets'))" />
+  </Target>
+  <Import Project="..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.75.1.143\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.75.1.143\build\CefSharp.WinForms.targets')" />
+</Project>
