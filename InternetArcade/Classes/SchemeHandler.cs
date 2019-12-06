@@ -1,18 +1,17 @@
-﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using Microsoft.Win32;
-using System.Reflection;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
-using CefSharp;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
+using CefSharp;
+using System.Windows.Forms;
+using System.Drawing;
+using CefSharp.Callback;
 
 namespace InternetArcade
 {
-    internal class SchemeHandler : IDisposable
+    internal class SchemeHandler : IResourceHandler, IDisposable
     {
         private static string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\";
 
@@ -56,9 +55,10 @@ namespace InternetArcade
 
             // if url is blocked
             /*if (!myForm.IsURLOk(request.Url)) {
-                // return true so it does not open up
-                return true;
-            }*/
+
+				// return true so it does not open up
+				return true;
+			}*/
 
             // if url is browser file
             if (uri.Host == "storage")
@@ -66,8 +66,7 @@ namespace InternetArcade
                 fileName = appPath + uri.Host + fileName;
                 if (File.Exists(fileName))
                 {
-                    Task.Factory.StartNew(() =>
-                    {
+                    Task.Factory.StartNew(() => {
                         using (callback)
                         {
                             //var bytes = Encoding.UTF8.GetBytes(resource);
@@ -201,5 +200,19 @@ namespace InternetArcade
             return true;
         }
 
+        public bool Open(IRequest request, out bool handleRequest, ICallback callback)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Skip(long bytesToSkip, out long bytesSkipped, IResourceSkipCallback callback)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Read(Stream dataOut, out int bytesRead, IResourceReadCallback callback)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

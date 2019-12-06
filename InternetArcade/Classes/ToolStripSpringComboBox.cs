@@ -9,6 +9,7 @@ namespace InternetArcade.Classes
     {
         [DefaultValue(0)]
         public int RightMargin { get; set; }
+        public object DataSource { get; set; }
 
         public override Size GetPreferredSize(Size constrainingSize)
         {
