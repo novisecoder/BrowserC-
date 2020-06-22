@@ -50,6 +50,8 @@ namespace InternetArcade
             if (this.adrBar.Text != "") Url = this.adrBar.Text;
 
             var settings = new CefSettings();
+            {
+            }
             Cef.Initialize(settings);
         }
 
@@ -294,45 +296,44 @@ namespace InternetArcade
             //Uri outUri;
             //string newUrl = url;
             //string urlToLower = url.Trim().ToLower();
-
-            //Uri.TryCreate(url, UriKind.Absolute, out outUri);
-
-            //if (!(urlToLower.StartsWith("http") || urlToLower.StartsWith(SchemeHandlerFactory.SchemeName) || urlToLower.StartsWith(SchemeHandlerFactory.SchemeNameTest)))
+            //if (urlToLower == "localhost")
             //{
-            //    if (outUri == null || outUri.Scheme != Uri.UriSchemeFile) newUrl = "http://" + url;
+            //    newUrl = "http://localhost/";
             //}
-
-            //else if (urlToLower.StartsWith(SchemeHandlerFactory.SchemeName + ":") || urlToLower.StartsWith(SchemeHandlerFactory.SchemeNameTest + ":") ||
-            //    (Uri.TryCreate(newUrl, UriKind.Absolute, out outUri)
-            //&& ((outUri.Scheme == Uri.UriSchemeHttp || outUri.Scheme == Uri.UriSchemeHttps) && newUrl.Contains(".") || outUri.Scheme == Uri.UriSchemeFile)))
+            //else if(url.CheckIfFilePath() || url.CheckIfFilePath2())
             //{
-            //    getCurrentBrowser.Load(newUrl);
+            //    newUrl = url.PathToURL();
             //}
             //else
             //{
-            //    getCurrentBrowser.Load(searchURL + HttpUtility.UrlEncode(url));
+            //    Uri.TryCreate(url, UriKind.Absolute, out outUri);
+            //    if (outUri == null || outUri.Scheme != Uri.UriSchemeFile)
+            //    {
+            //        newUrl = "http://" + url;
+            //    }
+
+            //    if(urlToLower.StartsWith("chrome:") 
+            //        || (Uri.TryCreate(newUrl, UriKind.Absolute, out outUri)
+            //        && ((outUri.Scheme == Uri.UriSchemeHttp 
+            //        || outUri.Scheme == Uri.UriSchemeHttps)
+            //        && newUrl.Contains(".") || outUri.Scheme == Uri.UriSchemeFile)))
+            //    {
+
+            //    }
+            //    else
+            //    {
+            //        newUrl = searchURL + HttpUtility.UrlEncode(url);
+            //    }
             //}
-            Uri outUri;
-            string newUrl = url;
-            string urlToLower = url.Trim().ToLower();
-            if (urlToLower == "localhost")
+            //getCurrentBrowser.Load(newUrl);
+            try
             {
-                newUrl = "http://localhost/";
+                getCurrentBrowser.Load(adrBarTextBox.Text);
             }
-            else
+            catch(Exception ex)
             {
-                Uri.TryCreate(url, UriKind.Absolute, out outUri);
-                if (outUri == null)
-                {
-                    newUrl = "http://" + url;
-                }
-                else
-                {
-                    newUrl = searchURL + HttpUtility.UrlEncode(url);
-                }
+                MessageBox.Show(ex.Message);
             }
-            getCurrentBrowser.Load(newUrl);
-            SetFormTitle(newUrl);
         }
 
         private void BrowserDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -422,17 +423,18 @@ namespace InternetArcade
         private void OnBrowserLoadError(object sender, LoadErrorEventArgs e)
         {
             DisplayOutput("Load Error:" + e.ErrorCode + ";" + e.ErrorText);
-            DisplayOutput("cef://web/error.html");
+            DisplayOutput("No Internet");
         }
 
         private void DisplayOutput(string output)
         {
-            this.InvokeOnUiThreadIfRequired(() => errorLbl.Text = output);
+            /*this.InvokeOnUiThreadIfRequired(() => */
+            errorLbl.Text = output;
         }
 
         private void OnBrowserStatusMessage(object sender, StatusMessageEventArgs e)
         {
-            this.InvokeOnUiThreadIfRequired(() => loadingLbl.Text = e.Value);
+            //loadingLbl.Text = e.Value;
         }
 
         private void OnBrowserAddressChanged(object sender, AddressChangedEventArgs e)
@@ -468,7 +470,7 @@ namespace InternetArcade
         {
             SetCanGoBack(e.CanGoBack);
             SetCanGoForward(e.CanGoForward);
-            this.InvokeOnUiThreadIfRequired(() => SetIsLoading(!e.CanReload));
+            SetIsLoading(!e.CanReload);
         }
         public void InvokeIfNeeded(Action action)
         {
@@ -521,22 +523,22 @@ namespace InternetArcade
         {
             if (isLoading == true)
             {
-                loadingLbl.Text = "Loading";
+                //loadingLbl.Text = "Loading";
             }
             else
             {
-                loadingLbl.Text = "";
+                //loadingLbl.Text = "";
             }
         }
 
         private void SetCanGoForward(bool canGoForward)
         {
-            this.InvokeOnUiThreadIfRequired(() => fwdBtn.Enabled = canGoForward);
+            //fwdBtn.Enabled = canGoForward;
         }
 
         private void SetCanGoBack(bool canGoBack)
         {
-            this.InvokeOnUiThreadIfRequired(() => backBtn.Enabled = canGoBack);
+            //backBtn.Enabled = canGoBack;
         }
 
 
